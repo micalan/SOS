@@ -4,7 +4,7 @@ FLAGS = -g -ffreestanding -fno-builtin -Werror -Wno-unused-label -Wno-cpp -Wno-u
 
 all: ./build/kernel.o ./build/boot.o
 	rm -f ./bin/myos.bin
-	i686-elf-gcc -T linker.ld -o ./bin/myos.bin -ffreestanding -O0 -nostdlib ./build/boot.o ./build/kernel.o -lgcc
+	i686-elf-gcc -T linker.ld -o ./bin/myos.bin $(FLAGS) ./build/boot.o ./build/kernel.o -lgcc
 	cp -f ./bin/myos.bin isodir/boot/
 	grub-mkrescue -o myos.iso isodir
 
